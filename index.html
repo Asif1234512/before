@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Click Flower</title>
+<style>
+  #flower { display: none; }
+  .flower-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+  }
+</style>
+</head>
+<body>
+
+<button id="drawButton">Draw Flower</button>
+<div class="flower-container" id="flowerContainer"></div>
+
+<script>
+    document.getElementById('drawButton').addEventListener('click', function() {
+    drawFlower();
+  });
+  
+  function drawFlower() {
+    const container = document.getElementById('flowerContainer');
+    let flowerHTML = '';
+  
+    // Create the stem
+    flowerHTML += '<div style="position: absolute; width: 10px; height: 200px; background-color: green; top: 100px; left: 95px;"></div>';
+  
+    // Create the leaves
+    flowerHTML += '<div style="position: absolute; width: 20px; height: 20px; background-color: green; top: 200px; left: 85px; border-radius: 50%;"></div>';
+    flowerHTML += '<div style="position: absolute; width: 20px; height: 20px; background-color: green; top: 225px; left: 115px; border-radius: 50%;"></div>';
+  
+    // Create the petals
+    for (let i = 0; i < 4; i++) {
+      flowerHTML += `<div style="position: absolute; width: 100px; height: 100px; background-color: orange; top: ${50 + (i % 2) * 100}px; left: ${50 + (i < 2 ? 0 : 100)}px; border-radius: 50%;"></div>`;
+    }
+  
+    // Create the center of the flower
+    flowerHTML += '<div style="position: absolute; width: 100px; height: 100px; background-color: yellow; top: 100px; left: 50px; border-radius: 50%;"></div>';
+  
+    // Append the flower HTML to the container
+    container.innerHTML = flowerHTML;
+    container.style.display = 'block';
+  }
+// JavaScript code will go here
+</script>
+
+</body>
+</html>
